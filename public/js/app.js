@@ -2,23 +2,23 @@ const form = document.querySelector('form')
 const input = document.querySelector('input')
 const loading = document.getElementById('p1')
 const message = document.getElementById('p2')
-fetch('http://ip-api.com/json').then((response) => {
-    response.json().then((data) => {
-        console.log(data)
-        loading.textContent = 'Loading'
-        const latitude = data.lat
-        const longitude = data.lon
-        const url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + encodeURIComponent(latitude) + '&lon=' + encodeURIComponent(longitude) + '&appid=98c34c2b7c860284d48bc82dd69819f3&limit=1&units=metric'
-        fetch(url).then((response) => {
-            response.json().then(({ main }) => {
-                loading.textContent = data.city + ', ' + data.regionName
-                message.textContent = main.temp
-                console.log(main);
-            })
+// fetch('http://ip-api.com/json').then((response) => {
+//     response.json().then((data) => {
+//         console.log(data)
+//         loading.textContent = 'Loading'
+//         const latitude = data.lat
+//         const longitude = data.lon
+//         const url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + encodeURIComponent(latitude) + '&lon=' + encodeURIComponent(longitude) + '&appid=98c34c2b7c860284d48bc82dd69819f3&limit=1&units=metric'
+//         fetch(url).then((response) => {
+//             response.json().then(({ main }) => {
+//                 loading.textContent = data.city + ', ' + data.regionName
+//                 message.textContent = main.temp
+//                 console.log(main);
+//             })
 
-        })
-    })
-})
+//         })
+//     })
+// })
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     const location = input.value
@@ -40,7 +40,7 @@ form.addEventListener('submit', (e) => {
             fetch(url).then((response) => {
                 response.json().then(({ main }) => {
                     loading.textContent = place_name
-                    message.textContent = main.temp + String.fromCharCode(176) + 'C\nMax Temp =' + main.temp_max
+                    message.textContent = main.temp + String.fromCharCode(176) + 'C<br>Max Temp :' + main.temp_max
                     console.log(main);
                 })
             })
