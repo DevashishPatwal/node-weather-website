@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
 const app = express()
-
+const port = process.env.PORT || 3000
 //specify path for static directory and views path
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates')
@@ -63,6 +63,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server up and running')
+app.listen(port, () => {
+    console.log('Server up and running at port' + port)
 })
