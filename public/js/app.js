@@ -40,7 +40,7 @@ form.addEventListener('submit', (e) => {
             fetch(url).then((response) => {
                 response.json().then(({ main }) => {
                     loading.textContent = place_name
-                    message.textContent = main.temp + String.fromCharCode(176) + 'C'
+                    message.textContent = main.temp + String.fromCharCode(176) + 'C\nMax Temp =' + main.temp_max
                     console.log(main);
                 })
             })
